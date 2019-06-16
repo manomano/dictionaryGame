@@ -1,22 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Container from '@material-ui/core/Container';
 import Word from  './Components/word.js';
 
 function App() {
   return (
-    <div>
+    <Container maxWidth="sm">
       <header>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          this is my game
-        </p>
+
+        <h1>
+          this is dictionary game
+        </h1>
 
         <Word/>
 
 
       </header>
-    </div>
+    </Container>
   );
 }
 
