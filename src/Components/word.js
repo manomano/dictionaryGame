@@ -23,7 +23,8 @@ class Word extends React.Component {
         theWord :"",
         chain:[],
         currentDescription:'',
-        textArr:[]
+        textArr:[],
+        curIndex:-1
     };
 
 
@@ -33,6 +34,10 @@ class Word extends React.Component {
         super(props);
         this.start = this.start.bind(this);
         this.getDefinition = this.getDefinition.bind(this);
+
+    }
+
+    prev(){
 
     }
 
