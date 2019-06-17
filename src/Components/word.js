@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
+
 //import { makeStyles } from '@material-ui/core/styles';
 //import { red } from '@material-ui/core/colors';
 //import Icon from '@material-ui/core/Icon';
@@ -34,11 +35,16 @@ class Word extends React.Component {
         super(props);
         this.start = this.start.bind(this);
         this.getDefinition = this.getDefinition.bind(this);
+        this.prev = this.prev.bind(this);
 
     }
 
     prev(){
+        this.setState({curIndex:this.state.curIndex-1, theWord:this.state.chain[this.state.curIndex-1].searchedWord, textArr: this.state.chain[this.state.curIndex-1].description.split(" ")})
+    }
 
+    next(){
+        this.setState({curIndex:this.state.curIndex+1, theWord:this.state.chain[this.state.curIndex+1].searchedWord, textArr: this.state.chain[this.state.curIndex+1].description.split(" ")})
     }
 
     start(){
@@ -53,10 +59,11 @@ class Word extends React.Component {
 
     getDefinition(e, word){
 
-        this.setState({theWord:word});
+        this.setState({theWord:word, chain:this.state.chain.slice(0,this.state.curIndex+1)},()=>{this.getDesc();});
 
-        this.getDesc();
     }
+
+
 
 
     getDesc(){
@@ -71,7 +78,7 @@ class Word extends React.Component {
                 let text = "";
                 response[0].shortdef.forEach(x=>text+=" "+x);
 
-                me.setState({currentDescription:text,textArr:text.split(" "),chain:me.state.chain.concat({searchedWord:me.state.theWord, description:text})});
+                me.setState({curIndex: me.state.curIndex + 1, currentDescription:text,textArr:text.split(" "),chain:me.state.chain.concat({searchedWord:me.state.theWord, description:text})});
 
             })
             .catch(error => console.error('Error:', error));
@@ -90,9 +97,12 @@ class Word extends React.Component {
                 START
             </Button>
 
-                <Button>Prev</Button>
-                <Button>Next</Button>
+                <Button onClick={this.prev}>Prev</Button>
+                <Button onClick={this.next}>Next</Button>
                 <h2>{this.state.theWord}</h2>
+
+
+
                 <div>{this.state.chain.map((x,i)=>{
                     return <span key={"_"+i}>{x.searchedWord}"->"</span>
                 })}</div>
