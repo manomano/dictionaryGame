@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Container from '@material-ui/core/Container';
 import Word from  './Components/word.js';
@@ -10,7 +9,7 @@ function App() {
       <header>
 
         <h1>
-          this is dictionary game
+          THIS IS DICTIONARY GAME
         </h1>
 
         <Word/>
