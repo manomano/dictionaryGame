@@ -90,7 +90,6 @@ class Word extends React.Component {
         this.state.textArr.forEach((currentItem, index)=>{
             if(index%2===0 && currentItem.length>3){
                 if(currentItem===this.state.chain[0].searchedWord){
-                    alert("this is end")
                     this.setState({theEnd:true},()=>{open = true})
                 }
             }
@@ -161,7 +160,7 @@ class Word extends React.Component {
 
             })}</div>
 
-                <div style={{'display':(this.state.theEnd?'block':'none'),'color':'white', 'fontWeight':'bold','margin':'30px 0 0 0','border':'1px solid pink', 'padding':'2em', 'borderRadius':'15px', 'background':'#e35bea', 'boxShadow':'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+                <div style={{'display':(this.state.theEnd?'block':'none'),'color':'white', 'fontWeight':'bold','margin':'30px 0 0 0','border':'1px solid #e35bea', 'padding':'2em', 'borderRadius':'15px', 'background':'#e35bea', 'boxShadow':'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
                     Congratulations! You finished with {this.state.chain.length} steps
                 </div>
 
