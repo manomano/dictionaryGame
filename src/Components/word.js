@@ -91,7 +91,7 @@ class Word extends React.Component {
 
     isFinished(){
         this.state.textArr.forEach((currentItem, index)=>{
-            if(index%2===0 && currentItem.length>3){
+            if(!dictionary.hasOwnProperty(currentItem)){
                 if(currentItem===this.state.chain[0].searchedWord){
                     this.setState({theEnd:true},()=>{open = true})
                 }
