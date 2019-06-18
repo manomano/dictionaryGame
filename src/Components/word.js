@@ -5,12 +5,10 @@ import Link from '@material-ui/core/Link';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-//import pronounsDictionary from '../pronouns.js';
-
 import * as excludingWords from '../excludingWords.json';
 
 const dictionary = excludingWords.default;
-console.log(dictionary)
+
 
 //import { makeStyles } from '@material-ui/core/styles';
 //import { red } from '@material-ui/core/colors';
