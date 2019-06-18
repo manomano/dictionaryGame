@@ -5,7 +5,12 @@ import Link from '@material-ui/core/Link';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+//import pronounsDictionary from '../pronouns.js';
 
+import * as excludingWords from '../excludingWords.json';
+
+const dictionary = excludingWords.default;
+console.log(dictionary)
 
 //import { makeStyles } from '@material-ui/core/styles';
 //import { red } from '@material-ui/core/colors';
@@ -152,7 +157,7 @@ class Word extends React.Component {
                 'borderRadius':'15px',
                 'border':'1px solid #ededed',
                 'padding':'2em'}}>{this.state.textArr.map((currentItem, index)=>{
-                if(index%2===0 && currentItem.length>3){
+                if(!dictionary.hasOwnProperty(currentItem)){
                     return <div key={'cont_'+index}  style={{'display':'inline'}}><Link key={'lnk_'+index}  component="button" variant="body2" onClick={(e) => {this.getDefinition(e,currentItem)}}>{currentItem}</Link><span key={'sp_'+index} > </span></div>
                 }else{
                     return currentItem  + " "
