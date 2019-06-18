@@ -6,6 +6,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import * as excludingWords from '../excludingWords.json';
+var randomWords = require('random-words');
 
 const dictionary = excludingWords.default;
 
@@ -13,6 +14,8 @@ const dictionary = excludingWords.default;
 //import { makeStyles } from '@material-ui/core/styles';
 //import { red } from '@material-ui/core/colors';
 //import Icon from '@material-ui/core/Icon';
+
+console.log(randomWords({exactly: 1, minLength: 5}))
 
 
 
@@ -69,9 +72,10 @@ class Word extends React.Component {
     }
 
     start(){
-        let rand = Math.abs(Math.floor(Math.random() * 10) - 5);
+
         let me =  this;
-        this.setState({chain:[],theWord:me.state.initialWords[rand], theEnd:false},() => {
+        let firstWord = randomWords({exactly: 1, minLength: 5})[0]
+        this.setState({chain:[],theWord:firstWord, theEnd:false},() => {
             me.getDesc();
         });
 
